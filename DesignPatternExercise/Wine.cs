@@ -7,17 +7,15 @@ namespace DesignPatternExercise
     class Wine : iManufacture
     {
         private double _wPrice;
-        private int _numWine;
 
-        public Wine(double wPrice, int numWine)
+        public Wine(double wPrice)
         {
             _wPrice = wPrice;
-            _numWine = numWine;
         }
 
         public double GetPrice()
         {
-            return _wPrice * _numWine;
+            return _wPrice;
         }
     }
 }

@@ -6,16 +6,39 @@ namespace DesignPatternExercise
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello! Here at the Grand Circus Factory, we make two items:");
-            Console.WriteLine("Chocolate & Wine");
-            Console.WriteLine("Which would you prefer?");
-            var itemType = Console.ReadLine();
+            string response;
+            do
+            {
+                bool isInvalid;
+                do
+                {
+                    Console.WriteLine("Hello! Here at the Grand Circus Factory, we make two items:");
+                    Console.WriteLine("Chocolate & Wine" + "\n");
+                    Console.WriteLine("Which would you prefer?");
+                    var itemType = Console.ReadLine();
 
-            Console.WriteLine("How many would you like?");
-            var itemAmount = double.TryParse(Console.ReadLine(), out double value) ? value : default;
+                    Console.WriteLine("How many would you like?");
+                    var itemAmount = int.TryParse(Console.ReadLine(), out int value) ? value : default;
 
-            var factory = new ManufactureFactory();
-            var item = ManufactureFactory.Create(itemType, itemAmount);
+
+                    var factory = new ManufactureFactory();
+                    var item = factory.Create(itemType, itemAmount);
+
+                    Console.WriteLine($"The price of your items is: {item.GetPrice() * itemAmount}" + "\n");
+                    Console.WriteLine("Would you like to purchase more? (y/n)");
+                    response = Console.ReadLine().ToLower();
+                    isInvalid = response != "y" && response != "n";
+                    if (isInvalid)
+                    {
+                        Console.WriteLine("You need to enter a valid response! 'y' or 'n'");
+                    }
+                } while (isInvalid);
+            } while (response == "y");
+            Console.WriteLine("Thanks for your business!");
         }
+
+
     }
+
+
 }

@@ -7,17 +7,16 @@ namespace DesignPatternExercise
     class Chocolate : iManufacture
     {
         private double _cPrice;
-        private int _numChocolate;
 
-        public Chocolate (double cPrice, int numChocolate)
+        public Chocolate (double cPrice)
         {
             _cPrice = cPrice;
-            _numChocolate = numChocolate;
+
         }
 
         public double GetPrice()
         {
-            return _cPrice * _numChocolate;
+            return _cPrice;
         }
     }
 }

@@ -11,18 +11,18 @@ namespace DesignPatternExercise
         {
 
         }
+
         public iManufacture Create(string item, double price)
         {
-            int numChocolate = 0;
-            double cPrice = 0;
-            int numWine = 0;
-            double wPrice = 0;
+            //int numChocolate;
+            double cPrice = 2.99;
+            double wPrice = 9.99;
             switch (item.ToLower())
             {
                 case "chocolate":
-                    return new Chocolate(cPrice, numChocolate);
+                    return new Chocolate(cPrice);
                 case "wine":
-                    return new Wine(wPrice, numWine);
+                    return new Wine(wPrice);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(item));
 
